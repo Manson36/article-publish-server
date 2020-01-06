@@ -1,0 +1,37 @@
+
+name = "article-publish-server"
+mode = "dev"
+
+[web]
+host = "0.0.0.0"
+port = "8080"
+jwt_secret = "z-ingglobal_admin@!#" #jwt的密钥
+token_key = "z-ingglobal_ad_tk" #token name
+token_exp = 30 #token的过期时间，单位：天
+token_domain = "localhost"
+
+[postgres]
+host = "127.0.0.1"
+port = "5432"
+db = "postgres"
+user = "postgres"
+password = "123456"
+sslmode = "disable"
+
+[redis]
+host = "127.0.0.1"
+port = "6379"
+password = ""
+db = 0
+key_prefix = "z_ingglobal_admin:"
+
+[qiniu]
+access_key = "2PLF_riUNsPNeVn1EC0JAA-8k7dHDVpRUzwCleCc"
+secret_key = "XJVynE9DVwB1sQpa3FhuENFVohALYHMU5vC5rDkO"
+video_bucket = "zx-global"
+audio_bucket = "zx-global"
+static_bucket = "zx-global"
+video_uri = "https://static.zhixingglobal.com/"
+audio_uri = "https://static.zhixingglobal.com/"
+static_uri = "https://static.zhixingglobal.com/"
+callback_uri = "http://zx.classcool.net/"
