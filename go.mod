@@ -14,8 +14,11 @@ require (
 	github.com/mattn/go-isatty v0.0.11 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/qiniu/api.v7 v7.2.5+incompatible // indirect
+	github.com/qiniu/x v7.0.8+incompatible // indirect
 	github.com/spf13/viper v1.6.1
 	golang.org/x/sys v0.0.0-20191228213918-04cbcbbfeed8 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
 	gopkg.in/yaml.v2 v2.2.7 // indirect
+	qiniupkg.com/x v7.0.8+incompatible // indirect
 )
