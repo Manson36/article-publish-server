@@ -16,12 +16,14 @@ type AdminUserController struct {
 
 func (a *AdminUserController) Login(c *gin.Context) {
 	body := models.AdminUserLoginReqBody{}
+	//问题1：shouldBindJSON???验证
 	if err := c.ShouldBindJSON(&body); err != nil {
 		c.JSON(http.StatusOK, models.Ret{Code: 400, Msg: "用户登陆参数解析错误", Data: nil})
 		return
 	}
 
 	var hostname string
+	//问题2：tokendomain作用？？
 	if config.Web.TokenDomain != "" {
 		hostname = config.Web.TokenDomain
 	} else {

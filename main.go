@@ -4,6 +4,7 @@ import (
 	"github.com/article-publish-server/config"
 	"github.com/article-publish-server/controllers"
 	"github.com/article-publish-server/middlewares"
+	"github.com/article-publish-server/services"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -26,7 +27,8 @@ func web() error {
 	}
 
 	r := gin.Default()
-	r.Use(middlewares.Session(r.BasePath())) //basePath是指什么？？？
+	//basePath是指什么？？？session待定解决？？？
+	r.Use(middlewares.Session(r.BasePath()))
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, config.Server.Name+": pong")
 	}).GET("/name", func(c *gin.Context) {
@@ -34,7 +36,9 @@ func web() error {
 	})
 
 	//admin_user
-	adminUserController := controllers.AdminUserController{}
+	adminUserController := controllers.AdminUserController{
+		Service: services.NewAdminUserService(),
+	}
 	r.
 		Group("admin/user").
 		POST("/login", adminUserController.Login).
@@ -42,7 +46,7 @@ func web() error {
 		POST("/info", adminUserController.Info)
 
 	//image
-	imageController := controllers.ImageController{} //下面可以分开写吗？
+	imageController := controllers.ImageController{}
 	r.
 		Group("/image").
 		GET("/ue", imageController.GetUEConfig).

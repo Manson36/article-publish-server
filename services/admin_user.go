@@ -36,6 +36,7 @@ func (a adminUserService) Create(body *models.AdminUserAddReqBody) *models.Ret {
 		return &models.Ret{Code: 400, Msg: "请输入正确的平台类型"}
 	}
 
+	//trimSpace是怎么获取内容？？？
 	pwd := strings.TrimSpace(body.Password)
 	if pwd == "" {
 		return &models.Ret{Code: 400, Msg: "请输入管理员密码"}
@@ -51,6 +52,7 @@ func (a adminUserService) Create(body *models.AdminUserAddReqBody) *models.Ret {
 		return &models.Ret{Code: 400, Msg: "请输入昵称"}
 	}
 
+	//？？？？？
 	pwdInfo := utils.GenPwdAndSalt(pwd)
 	user := datamodels.AdminUser{
 		ID:           id,
@@ -95,17 +97,19 @@ func (a adminUserService) Login(body *models.AdminUserLoginReqBody) *models.Ret 
 	user, err := a.repo.Get("email = ? AND removed IS NOT TRUE", body.Email)
 	if err != nil {
 		log.Println("管理用户信息获取失败：", err.Error())
-		return &models.Ret{Code: 500, Msg: "挂历用户信息获取失败，请与平台联系"}
+		return &models.Ret{Code: 500, Msg: "管理用户信息获取失败，请与平台联系"}
 	}
 
 	if user == nil {
 		return &models.Ret{Code: 400, Msg: "该用户不存在"}
 	}
 
+	//这个需要强记吗？？？
 	if utils.HashPwdWithSalt(body.Password, user.Salt) != user.Password {
 		return &models.Ret{Code: 400, Msg: "密码输入错误"}
 	}
 
+	//里面包含jwt，怎么使用？？？
 	claims := models.AdminUserCustomClaims{}
 	claims.UserID = user.ID
 	token, err := claims.Sign()
