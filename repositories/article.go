@@ -3,6 +3,7 @@ package repositories
 import (
 	"github.com/article-publish-server/datamodels"
 	"github.com/article-publish-server/datasource"
+	"github.com/article-publish-server/utils/qnuploader"
 )
 
 type ArticleRepository interface {
@@ -17,7 +18,7 @@ type ArticleRepository interface {
 
 type articleRepository struct {
 	commonRepository
-	//uploader *qnuploader.Uploader		//七牛的使用，目的、作用、方法？？？
+	uploader *qnuploader.Uploader //七牛的使用，目的、作用、方法？？？
 }
 
 func NewArticleRepository() ArticleRepository {
@@ -25,6 +26,7 @@ func NewArticleRepository() ArticleRepository {
 		commonRepository: commonRepository{
 			db: datasource.PqDB.DB,
 		},
+		uploader: qnuploader.NewUploader(nil),
 	}
 }
 

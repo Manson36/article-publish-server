@@ -31,7 +31,7 @@ func (a adminUserService) Create(body *models.AdminUserAddReqBody) *models.Ret {
 	}
 
 	switch body.Platform {
-	case datamodels.ZingglobalPlatform, datamodels.ZHIdreamPaltform, datamodels.HealthEnginePlatform:
+	case datamodels.ZingglobalPlatform, datamodels.ZhidreamPlatform, datamodels.HealthEnginePlatform:
 	default:
 		return &models.Ret{Code: 400, Msg: "请输入正确的平台类型"}
 	}

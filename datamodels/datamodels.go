@@ -11,7 +11,7 @@ type PlatformType int8
 
 const (
 	ZingglobalPlatform   PlatformType = 1
-	ZHIdreamPaltform     PlatformType = 2
+	ZhidreamPlatform     PlatformType = 2
 	HealthEnginePlatform PlatformType = 3
 )
 
