@@ -26,6 +26,6 @@ func (p *postgres) readConf() {
 var Postgres = &postgres{}
 
 func (p *postgres) GetURI() string {
-	return fmt.Sprintf("host=%s, port=%s, user=%s, password=%s, daname=%s, sslmode=%s",
+	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
 		p.Host, p.Port, p.User, p.Password, p.DB, p.SSLMode)
 }

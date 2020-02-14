@@ -62,7 +62,7 @@ func Session(basePath string) gin.HandlerFunc {
 			return
 		}
 
-		if user.Disable {
+		if user.Disabled {
 			errFunc(500, "用户已被禁用")
 			return
 		}
